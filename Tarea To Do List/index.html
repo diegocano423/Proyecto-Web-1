@@ -1,0 +1,31 @@
+<!Doctype html>
+<html>
+<head>
+	<meta name="author" content="Diego Cano">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="todo">
+   <div class="col-md-6 col-md-offset-3" ng-controller="todoCtrl">
+   	<h1>To Do List App</h1>
+   	<h2><small>¡Tienes <span> {{totalTodos()}} </span> cosa(s) por hacer!</small></h2>
+    <form role="form" ng-submit="addToDo()">
+    	<div class="form-group">
+        <input type="text" class="form-control" placeholder="Ocupo hacer..." ng-model="todoFormText" required>
+        <input class="form-control btn-primary" type="submit" value="Añadir Nueva">
+    	</div>
+    </form> 
+    <ul class="list-group">
+     <li class="list-group-item" ng-repeat="todo in todos">
+      <input type="checkbox" ng-model="todo.done"/>
+      <span class="done-{{todo.done}}">{{todo.text}}</span>
+     </li>
+    </ul>
+    <button class="form-control btn-danger" ng-click="remove()">Borrar Seleccionadas</button>
+   </div>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+</body>
+</html>
